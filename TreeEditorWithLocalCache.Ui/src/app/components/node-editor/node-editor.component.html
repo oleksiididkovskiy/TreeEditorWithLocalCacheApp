@@ -1,0 +1,41 @@
+<section class="panel editor">
+  <h2>Node editor</h2>
+  <div *ngIf="!node"
+       class="muted">Select a cached node.</div>
+
+  <ng-container *ngIf="node">
+    <div class="meta">ID: {{ node.id }}</div>
+    <div class="meta">Parent: {{ node.parentId || 'root' }}</div>
+    <div class="state"
+         [class.deleted]="node.state === 'deleted'">{{ node.state }}</div>
+
+    <label>
+      Value
+      <input [disabled]="node.state === 'deleted'"
+             [ngModel]="value()"
+             (ngModelChange)="value.set($event)"
+             maxlength="500">
+    </label>
+    <button type="button"
+            (click)="save()"
+            [disabled]="node.state === 'deleted' || !value().trim()">Save value</button>
+
+    <div class="divider"></div>
+
+    <label>
+      New child value
+      <input [disabled]="node.state === 'deleted'"
+             [(ngModel)]="childValue"
+             maxlength="500">
+    </label>
+    <button type="button"
+            class="secondary"
+            (click)="createChild()"
+            [disabled]="node.state === 'deleted' || !childValue.trim()">Add child</button>
+
+    <button type="button"
+            class="danger"
+            (click)="deleteNode.emit()"
+            [disabled]="node.state === 'deleted'">Delete subtree</button>
+  </ng-container>
+</section>

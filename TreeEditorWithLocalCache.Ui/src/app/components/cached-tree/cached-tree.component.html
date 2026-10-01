@@ -1,0 +1,38 @@
+<section class="panel">
+  <div class="panel-title">
+    <div>
+      <h2>CachedTreeView</h2>
+      <p>In local cache</p>
+    </div>
+  </div>
+
+  <div *ngIf="roots.length === 0 && orphans.length === 0"
+       class="muted">It's empty for now.</div>
+
+  <ng-template #tree
+               let-nodes>
+    <ul class="tree-list">
+      <li *ngFor="let node of nodes">
+        <button type="button"
+                class="node-button"
+                [class.selected]="node.id === selectedId"
+                (click)="selectNode.emit(node)">
+          <span class="node-value">{{ node.value }}</span>
+          <span class="badge"
+                [class.deleted]="node.state === 'deleted'">{{ node.state }}</span>
+        </button>
+        <ng-container *ngIf="node.children.length">
+          <ng-container *ngTemplateOutlet="tree; context: { $implicit: node.children }"></ng-container>
+        </ng-container>
+      </li>
+    </ul>
+  </ng-template>
+
+  <ng-container *ngTemplateOutlet="tree; context: { $implicit: roots }"></ng-container>
+
+  <div *ngIf="orphans.length"
+       class="orphans">
+    <h3>Loaded but parent is not cached</h3>
+    <ng-container *ngTemplateOutlet="tree; context: { $implicit: orphans }"></ng-container>
+  </div>
+</section>

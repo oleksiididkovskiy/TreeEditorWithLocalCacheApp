@@ -1,0 +1,29 @@
+﻿@import './styles/_variables';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: $gray-05;
+  color: $almost-black;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.panel {
+  min-height: 540px;
+  background: white;
+  border: 1px solid $gray-02;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}

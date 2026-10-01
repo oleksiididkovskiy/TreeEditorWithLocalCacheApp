@@ -1,0 +1,73 @@
+﻿@import '../../../styles/_variables';
+
+.panel-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.panel-title h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.panel-title p {
+  margin: 4px 0 0;
+  color: $gray-01;
+  font-size: 13px;
+}
+
+.tree-list {
+  list-style: none;
+  padding-left: 18px;
+  margin: 4px 0;
+}
+
+.node-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+}
+
+.expander {
+  width: 28px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: $dark-blue;
+}
+
+.node-value {
+  flex: 1;
+}
+
+.load,
+.add {
+  border: 1px solid $gray-03;
+  background: $white;
+  border-radius: 6px;
+  padding: 4px 9px;
+  cursor: pointer;
+}
+
+.load:hover,
+.add:hover,
+.secondary:hover {
+  background: $gray-04;
+}
+
+.secondary {
+  border: 1px solid $gray-03;
+  background: $white;
+  border-radius: 7px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+.muted {
+  color: $gray-01;
+  font-size: 14px;
+}

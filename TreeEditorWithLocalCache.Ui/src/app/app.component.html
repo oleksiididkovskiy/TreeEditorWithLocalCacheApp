@@ -1,0 +1,21 @@
+<app-toolbar [pendingChanges]="pendingChanges()"
+             (apply)="apply()"
+             (reset)="reset()">
+</app-toolbar>
+
+<main class="layout">
+  <app-db-tree (loadToCache)="loadToCache($event)"
+               (loadNewRootToCache)="loadNewRootToCache()"></app-db-tree>
+
+  <app-cached-tree [roots]="cache.roots()"
+                   [orphans]="cache.orphans()"
+                   [selectedId]="selectedId()"
+                   (selectNode)="selectNode($event)">
+  </app-cached-tree>
+
+  <app-node-editor [node]="selectedNode()"
+                   (valueChange)="updateValue($event)"
+                   (addChild)="addChild($event)"
+                   (deleteNode)="deleteSelected()">
+  </app-node-editor>
+</main>

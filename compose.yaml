@@ -1,0 +1,41 @@
+name: alexey-didkovskiy-tree-editor-test-app
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: tree_editor_test_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - tree-editor-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d tree_editor_test_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./TreeEditorWithLocalCache.Api
+    environment:
+      ConnectionStrings__ApplicationDb: Host=db;Port=5432;Database=tree_editor_test_db;Username=postgres;Password=postgres
+      ASPNETCORE_ENVIRONMENT: Development
+    ports:
+      - "5001:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  ui:
+    build:
+      context: ./TreeEditorWithLocalCache.Ui
+    ports:
+      - "4200:80"
+    depends_on:
+      - api
+
+volumes:
+  tree-editor-db:

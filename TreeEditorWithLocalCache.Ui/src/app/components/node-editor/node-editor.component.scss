@@ -1,0 +1,80 @@
+﻿@import '../../../styles/_variables';
+
+.editor h2 {
+  margin: 0 0 16px;
+  font-size: 18px;
+}
+
+label {
+  display: block;
+  margin: 12px 0;
+  font-size: 13px;
+  color: $dark-blue;
+}
+
+input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 6px;
+  padding: 9px 10px;
+  border: 1px solid $gray-03;
+  border-radius: 7px;
+  font: inherit;
+}
+
+button {
+  width: 100%;
+  margin-top: 8px;
+  border: 0;
+  border-radius: 7px;
+  padding: 9px 12px;
+  background: $dark-green;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+button.secondary {
+  background: $dark-blue;
+}
+
+button.danger {
+  background: #7e0909;
+  margin-top: 18px;
+}
+
+.meta {
+  font-size: 11px;
+  color: $gray-01;
+  word-break: break-all;
+  margin: 4px 0;
+}
+
+.state {
+  display: inline-block;
+  margin: 10px 0;
+  font-size: 12px;
+  background: $gray-02;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.state.deleted {
+  background: $gray-06;
+  color: $dark-red;
+}
+
+.divider {
+  border-top: 1px solid $gray-02;
+  margin: 20px 0;
+}
+
+.muted {
+  color: $gray-01;
+  font-size: 14px;
+}

@@ -1,0 +1,15 @@
+<header class="toolbar">
+  <div>
+    <h1>Tree Editor test app</h1>
+  </div>
+  <div class="actions">
+    <span *ngIf="pendingChanges"
+          class="pending">Pending changes</span>
+    <button type="button"
+            [disabled]="!pendingChanges"
+            (click)="apply.emit()">Apply changes</button>
+    <button type="button"
+            class="secondary"
+            (click)="reset.emit()">Reset</button>
+  </div>
+</header>

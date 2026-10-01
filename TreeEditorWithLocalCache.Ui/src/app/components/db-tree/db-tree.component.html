@@ -1,0 +1,45 @@
+<section class="panel">
+  <div class="panel-title">
+    <div>
+      <h2>DBTreeView</h2>
+      <p>Data from DB</p>
+    </div>
+    <button type="button"
+            class="secondary"
+            (click)="refresh()">Refresh</button>
+  </div>
+
+  <div *ngIf="loading()"
+       class="muted">Loading roots…</div>
+  <div *ngIf="!loading() && roots().length === 0"
+       class="panel-title">
+    <div class="muted">No nodes.</div>
+    <button type="button"
+            class="add"
+            (click)="loadNewRootToCache.emit()">Add new root</button>
+  </div>
+
+  <ng-template #tree
+               let-nodes>
+    <ul class="tree-list">
+      <li *ngFor="let node of nodes">
+        <div class="node-row">
+          <button type="button"
+                  class="expander"
+                  (click)="toggle(node)">
+            {{ node.loading ? '…' : (node.expanded ? '▾' : '▸') }}
+          </button>
+          <span class="node-value">{{ node.value }}</span>
+          <button type="button"
+                  class="load"
+                  (click)="loadToCache.emit(node)">Load</button>
+        </div>
+        <ng-container *ngIf="node.expanded">
+          <ng-container *ngTemplateOutlet="tree; context: { $implicit: node.children }"></ng-container>
+        </ng-container>
+      </li>
+    </ul>
+  </ng-template>
+
+  <ng-container *ngTemplateOutlet="tree; context: { $implicit: roots() }"></ng-container>
+</section>

@@ -1,0 +1,48 @@
+﻿@import '../../../styles/_variables';
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  background: white;
+  border-bottom: 1px solid $gray-02;
+}
+
+h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actions button {
+  border: 0;
+  border-radius: 7px;
+  padding: 9px 14px;
+  background: $dark-green;
+  color: white;
+  cursor: pointer;
+}
+
+.actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.actions button.secondary {
+  background: $gray-02;
+  color: $almost-black;
+}
+
+.pending {
+  color: #863c0d !important;
+  background: #cec5a0;
+  border-radius: 999px;
+  padding: 4px 8px;
+}

@@ -1,0 +1,74 @@
+﻿@import '../../../styles/_variables';
+
+.panel-title h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.panel-title p {
+  margin: 4px 0 16px;
+  color: $gray-01;
+  font-size: 13px;
+}
+
+.tree-list {
+  list-style: none;
+  padding-left: 18px;
+  margin: 4px 0;
+}
+
+.node-button {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 7px;
+  padding: 7px 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.node-button:hover {
+  background: $gray-05;
+}
+
+.node-button.selected {
+  border-color: #94a3b8;
+  background: $gray-04;
+}
+
+.node-value {
+  flex: 1;
+}
+
+.badge {
+  font-size: 11px;
+  color: $dark-blue;
+  background: $gray-02;
+  border-radius: 999px;
+  padding: 2px 7px;
+}
+
+.badge.deleted {
+  background: $gray-06;
+  color: $dark-red;
+}
+
+.orphans {
+  margin-top: 20px;
+  border-top: 1px dashed $gray-03;
+  padding-top: 14px;
+}
+
+.orphans h3 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: $gray-01;
+}
+
+.muted {
+  color: $gray-01;
+  font-size: 14px;
+}
